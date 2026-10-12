@@ -1,8 +1,9 @@
-# Static archive only. find-debuginfo writes an empty debugsource list
-# and rpmbuild then refuses to package it. With debug packages off,
-# spec-helper still runs eu-strip, which cannot strip a .a archive.
+# Static archive only. Leaving debug packages off still runs the debug
+# script, which copies sources into /usr/src/debug with nobody to own them.
+# Mark debug info as handled and do not run that script.
 %global _enable_debug_packages 0
-%global dont_strip 1
+%global __debug_package 1
+%global __debug_install_post %{nil}
 
 Name:		sysprof-capture
 Version:	51.0
