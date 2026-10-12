@@ -1,3 +1,7 @@
+# Static archive only. find-debuginfo writes an empty debugsource list
+# and rpmbuild then refuses to package it.
+%global _enable_debug_packages 0
+
 Name:		sysprof-capture
 Version:	51.0
 Release:	1
